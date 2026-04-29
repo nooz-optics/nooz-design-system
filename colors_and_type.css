@@ -30,6 +30,57 @@
 }
 /* Mont has no 900 cut in the codebase — 700 is used where 900 is specified by the theme. */
 
+/* --- PP Neue Machina (display / brand book) --- */
+/* Plain : version classique. Inktrap : version display avec encoches. */
+@font-face {
+  font-family: 'PP Neue Machina';
+  font-weight: 300;
+  src: url('./fonts/pp-neue-machina/plain-light.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Machina';
+  font-weight: 400;
+  src: url('./fonts/pp-neue-machina/plain-regular.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Machina';
+  font-weight: 500;
+  src: url('./fonts/pp-neue-machina/plain-medium.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Machina';
+  font-weight: 800;
+  src: url('./fonts/pp-neue-machina/plain-ultrabold.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Machina Inktrap';
+  font-weight: 300;
+  src: url('./fonts/pp-neue-machina/inktrap-light.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Machina Inktrap';
+  font-weight: 400;
+  src: url('./fonts/pp-neue-machina/inktrap-regular.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Machina Inktrap';
+  font-weight: 500;
+  src: url('./fonts/pp-neue-machina/inktrap-medium.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Machina Inktrap';
+  font-weight: 800;
+  src: url('./fonts/pp-neue-machina/inktrap-ultrabold.otf') format('opentype');
+  font-display: swap;
+}
+
 :root {
   /* ------------------------------------------------------------------
      BRAND COLORS
