@@ -4,16 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NOOZ — Design System</title>
+  <meta name="description" content="NOOZ Optics — design system officiel : tokens W3C, typographie Mont, palette, composants.">
   <link rel="stylesheet" href="colors_and_type.css">
+  <link rel="icon" href="assets/logo.png">
   <style>
     :root {
-      --content-max: 1200px;
-      --side-width: 240px;
-      --gap-section: 96px;
+      --content-w: 1280px;
+      --gutter: 64px;
+      --gap: 96px;
+      --topbar-h: 64px;
+      --toolbar-h: 56px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html { scroll-behavior: smooth; }
     html, body {
       background: var(--nooz-background);
       color: var(--nooz-text);
@@ -22,79 +27,133 @@
       font-weight: 400;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    a { color: var(--nooz-terracota); text-decoration: none; transition: opacity 0.4s ease; }
+    a {
+      color: var(--nooz-terracota);
+      text-decoration: none;
+      transition: opacity 0.4s ease;
+    }
     a:hover { opacity: 0.7; }
 
-    /* ── Layout ── */
-    .layout { display: flex; min-height: 100vh; }
-
-    aside {
-      width: var(--side-width);
-      flex-shrink: 0;
-      padding: 64px 28px;
-      border-right: 1px solid var(--nooz-dimmed);
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      background: var(--nooz-background);
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
     }
 
-    aside .brand {
-      font-size: 24px;
+    code {
+      font-family: 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.9em;
+    }
+
+    /* ── Top nav (sticky) ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--topbar-h);
+      background: rgba(252, 250, 250, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--nooz-dimmed);
+    }
+
+    .topbar-inner {
+      max-width: var(--content-w);
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 var(--gutter);
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .logo .mark {
+      font-family: 'Mont', sans-serif;
+      font-size: 18px;
       font-weight: 700;
       color: var(--nooz-title);
       letter-spacing: 0.18em;
-      margin-bottom: 6px;
-      text-transform: uppercase;
     }
-
-    aside .sublabel {
-      font-size: 11px;
+    .logo .label {
+      font-size: 10px;
       font-weight: 100;
+      letter-spacing: 0.32em;
       color: var(--nooz-decimal);
-      letter-spacing: 0.28em;
       text-transform: uppercase;
-      margin-bottom: 48px;
     }
 
-    aside nav { display: flex; flex-direction: column; gap: 4px; }
-
-    aside nav a {
-      display: block;
-      padding: 8px 12px;
-      font-size: 13px;
-      color: var(--nooz-text);
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      border-left: 2px solid transparent;
-      transition: opacity 0.4s ease, border-color 0.2s ease;
-    }
-    aside nav a:hover { opacity: 1; color: var(--nooz-title); border-left-color: var(--nooz-terracota); }
-    aside nav a.active { color: var(--nooz-title); border-left-color: var(--nooz-terracota); font-weight: 500; }
-
-    aside .footer {
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid var(--nooz-dimmed);
-      font-size: 11px;
-      color: var(--nooz-decimal);
-      line-height: 1.5;
-    }
-
-    main {
+    .topbar nav {
+      display: flex;
+      gap: 28px;
       flex: 1;
-      padding: 80px 64px 160px;
-      max-width: var(--content-max);
+    }
+
+    .topbar nav a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--nooz-text);
+      letter-spacing: 0.04em;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .topbar nav a:hover { color: var(--nooz-title); opacity: 1; }
+    .topbar nav a.active {
+      color: var(--nooz-title);
+      border-bottom-color: var(--nooz-terracota);
+      font-weight: 500;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .topbar-right .pill {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      padding: 6px 14px;
+      background: var(--nooz-light-gray);
+      color: var(--nooz-title);
+      border-radius: 100px;
+      text-transform: uppercase;
+    }
+
+    .topbar-right a.gh {
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--nooz-text);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--content-w);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
     }
 
     /* ── Hero ── */
     .hero {
-      margin-bottom: var(--gap-section);
+      padding: 80px 0 56px;
     }
-    .hero .label {
+
+    .hero .eyebrow {
       font-size: 11px;
       font-weight: 100;
       letter-spacing: 0.42em;
@@ -102,248 +161,403 @@
       text-transform: uppercase;
       margin-bottom: 28px;
     }
+
     .hero h1 {
-      font-size: 70px;
+      font-size: 96px;
       font-weight: 700;
       color: var(--nooz-title);
-      letter-spacing: -0.01em;
-      line-height: 1;
+      letter-spacing: -0.02em;
+      line-height: 0.95;
       margin-bottom: 28px;
+      max-width: 920px;
     }
-    .hero p {
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--nooz-terracota);
+    }
+
+    .hero .lead {
       font-size: 18px;
       font-weight: 300;
       color: var(--nooz-text);
-      max-width: 640px;
-      line-height: 1.6;
-    }
-    .hero .meta {
-      display: flex;
-      gap: 32px;
-      margin-top: 40px;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      color: var(--nooz-decimal);
-      text-transform: uppercase;
-    }
-    .hero .meta span strong { color: var(--nooz-title); font-weight: 500; margin-left: 6px; }
-
-    /* ── Sections ── */
-    section { margin-bottom: var(--gap-section); scroll-margin-top: 32px; }
-
-    section > h2 {
-      font-size: 11px;
-      font-weight: 100;
-      letter-spacing: 0.42em;
-      color: var(--nooz-decimal);
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      max-width: 720px;
+      line-height: 1.65;
+      margin-bottom: 56px;
     }
 
-    section > h3 {
-      font-size: 42px;
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--nooz-dimmed);
+      border-bottom: 1px solid var(--nooz-dimmed);
+    }
+
+    .stat {
+      padding: 28px 24px;
+      border-right: 1px solid var(--nooz-dimmed);
+    }
+    .stat:first-child { padding-left: 0; }
+    .stat:last-child { border-right: none; padding-right: 0; }
+
+    .stat .v {
+      font-size: 34px;
       font-weight: 500;
       color: var(--nooz-title);
       line-height: 1;
-      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .stat .l {
+      font-size: 11px;
+      font-weight: 100;
+      letter-spacing: 0.32em;
+      color: var(--nooz-decimal);
+      text-transform: uppercase;
+      margin-top: 12px;
     }
 
-    section > .lead {
+    /* ── Toolbar (sticky below topbar) ── */
+    .toolbar {
+      position: sticky;
+      top: var(--topbar-h);
+      z-index: 50;
+      background: rgba(252, 250, 250, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--nooz-dimmed);
+      padding: 12px 0;
+    }
+    .toolbar-inner {
+      max-width: var(--content-w);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .search {
+      flex: 1;
+      max-width: 360px;
+      position: relative;
+    }
+    .search input {
+      width: 100%;
+      height: 36px;
+      padding: 0 14px 0 36px;
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--nooz-title);
+      background: var(--nooz-white);
+      border: 1px solid var(--nooz-dimmed);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .search input::placeholder { color: var(--nooz-decimal); }
+    .search input:focus { border-color: var(--nooz-title); }
+    .search::before {
+      content: '⌕';
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--nooz-decimal);
+      font-size: 14px;
+    }
+
+    .format-toggle {
+      display: inline-flex;
+      border: 1px solid var(--nooz-dimmed);
+      background: var(--nooz-white);
+      height: 36px;
+    }
+    .format-toggle button {
+      padding: 0 14px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--nooz-decimal);
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+    .format-toggle button + button { border-left: 1px solid var(--nooz-dimmed); }
+    .format-toggle button.active {
+      background: var(--nooz-title);
+      color: var(--nooz-white);
+    }
+    .format-toggle button:hover:not(.active) { color: var(--nooz-title); }
+
+    .toolbar-spacer { flex: 1; }
+    .toolbar-meta { font-size: 11px; color: var(--nooz-decimal); letter-spacing: 0.04em; }
+
+    /* ── Section ── */
+    section.section {
+      padding: var(--gap) 0 0;
+      scroll-margin-top: calc(var(--topbar-h) + var(--toolbar-h) + 16px);
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 32px;
+      align-items: baseline;
+      padding-bottom: 32px;
+      margin-bottom: 56px;
+      border-bottom: 1px solid var(--nooz-dimmed);
+    }
+    .section-num {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.42em;
+      color: var(--nooz-decimal);
+      text-transform: uppercase;
+    }
+    .section-title h2 {
+      font-size: 56px;
+      font-weight: 500;
+      color: var(--nooz-title);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .section-title p {
       font-size: 16px;
       font-weight: 300;
       color: var(--nooz-text);
       max-width: 640px;
-      margin-bottom: 48px;
       line-height: 1.6;
     }
 
-    section .group-title {
-      font-size: 13px;
+    .group-label {
+      font-size: 11px;
       font-weight: 500;
+      letter-spacing: 0.32em;
       color: var(--nooz-title);
-      letter-spacing: 0.16em;
       text-transform: uppercase;
-      margin: 48px 0 20px;
+      margin: 56px 0 24px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--nooz-dimmed);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
     }
-    section .group-title:first-of-type { margin-top: 0; }
+    .group-label:first-child { margin-top: 0; }
+    .group-label small {
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--nooz-decimal);
+      text-transform: none;
+    }
 
-    /* ── Colors ── */
+    /* ── Color swatches ── */
     .swatch-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 16px;
+      gap: 1px;
+      background: var(--nooz-dimmed);
+      border: 1px solid var(--nooz-dimmed);
     }
 
     .swatch {
+      background: var(--nooz-white);
       cursor: pointer;
-      transition: opacity 0.4s ease;
+      position: relative;
     }
-    .swatch:hover { opacity: 0.85; }
+    .swatch:hover .copy-btn { opacity: 1; }
 
     .swatch .chip {
       width: 100%;
-      aspect-ratio: 1.4;
-      border: 1px solid var(--nooz-dimmed);
+      height: 200px;
+      position: relative;
+      transition: opacity 0.4s ease;
     }
-    .swatch.is-light .chip { border-color: rgba(0,0,0,0.08); }
+    .swatch:hover .chip { opacity: 0.92; }
+
+    .swatch .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 6px 10px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: var(--nooz-white);
+      color: var(--nooz-title);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .swatch.is-light .copy-btn { background: var(--nooz-title); color: var(--nooz-white); }
+
+    .swatch .info { padding: 16px 18px 18px; }
 
     .swatch .name {
       font-size: 13px;
       font-weight: 500;
       color: var(--nooz-title);
-      margin-top: 12px;
       letter-spacing: 0.02em;
     }
     .swatch .hex {
-      font-size: 12px;
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
       font-weight: 300;
       color: var(--nooz-decimal);
-      margin-top: 2px;
-      font-family: 'SF Mono', Menlo, Consolas, monospace;
+      margin-top: 4px;
     }
     .swatch .desc {
       font-size: 11px;
+      color: var(--nooz-decimal);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* ── Typography ── */
+    .weights {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--nooz-dimmed);
+      border: 1px solid var(--nooz-dimmed);
+      margin-bottom: 56px;
+    }
+    .weight {
+      background: var(--nooz-white);
+      padding: 36px 32px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .weight:hover { background: #fffefe; }
+    .weight .demo {
+      font-size: 96px;
+      color: var(--nooz-title);
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .weight .name {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--nooz-title);
+    }
+    .weight .num {
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
+      color: var(--nooz-decimal);
+      margin-top: 4px;
+    }
+
+    .type-list { border-top: 1px solid var(--nooz-dimmed); }
+    .type-row {
+      display: grid;
+      grid-template-columns: 200px 1fr 180px;
+      gap: 32px;
+      align-items: baseline;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--nooz-dimmed);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .type-row:hover { background: #faf6f6; }
+
+    .type-row .name-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .type-row .name-block .name {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--nooz-title);
+    }
+    .type-row .name-block .meta {
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--nooz-decimal);
+      letter-spacing: 0.04em;
+    }
+    .type-row .sample { color: var(--nooz-title); letter-spacing: -0.005em; }
+    .type-row .specs {
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
+      color: var(--nooz-decimal);
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ── Scale (spacing/radius/shadow) ── */
+    .scale-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--nooz-dimmed);
+      border: 1px solid var(--nooz-dimmed);
+    }
+    .scale-cell {
+      background: var(--nooz-white);
+      padding: 28px 24px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      min-height: 200px;
+      transition: background 0.2s ease;
+    }
+    .scale-cell:hover { background: #fffefe; }
+    .scale-cell .visual {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+      margin-bottom: 16px;
+    }
+    .scale-cell .name {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--nooz-title);
+    }
+    .scale-cell .value {
+      font-family: 'SF Mono', Menlo, monospace;
+      font-size: 11px;
+      color: var(--nooz-decimal);
+      margin-top: 4px;
+    }
+    .scale-cell .desc {
+      font-size: 10px;
       color: var(--nooz-decimal);
       margin-top: 6px;
       line-height: 1.4;
     }
 
-    /* ── Typography ── */
-    .type-row {
-      display: grid;
-      grid-template-columns: 200px 1fr 140px;
-      gap: 32px;
-      align-items: baseline;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--nooz-dimmed);
-    }
-    .type-row:last-child { border-bottom: none; }
-
-    .type-row .type-name {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--nooz-title);
-    }
-    .type-row .type-name small {
-      display: block;
-      color: var(--nooz-decimal);
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      margin-top: 4px;
-      font-size: 11px;
-      text-transform: none;
-    }
-    .type-row .type-sample {
-      color: var(--nooz-title);
-      letter-spacing: -0.01em;
-    }
-    .type-row .type-meta {
-      font-size: 11px;
-      color: var(--nooz-decimal);
-      font-family: 'SF Mono', Menlo, monospace;
-      text-align: right;
-      letter-spacing: 0.04em;
-    }
-
-    .weight-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 32px;
-    }
-    .weight-card {
-      padding: 28px;
-      background: var(--nooz-white);
-      border: 1px solid var(--nooz-dimmed);
-    }
-    .weight-card .demo {
-      font-size: 56px;
-      color: var(--nooz-title);
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-    .weight-card .meta {
-      font-size: 11px;
-      color: var(--nooz-decimal);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    /* ── Spacing / Radii / Shadows ── */
-    .scale-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 20px;
-    }
-
-    .scale-item {
-      padding: 28px;
-      background: var(--nooz-white);
-      border: 1px solid var(--nooz-dimmed);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      min-height: 180px;
-    }
-
-    .scale-item .visual {
-      flex: 1;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-
-    .scale-item .name {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--nooz-title);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .scale-item .value {
-      font-size: 11px;
-      color: var(--nooz-decimal);
-      font-family: 'SF Mono', Menlo, monospace;
-      margin-top: 4px;
-    }
-
-    .spacing-block {
-      background: var(--nooz-terracota);
-      height: 28px;
-    }
-
-    .radius-block {
-      width: 80px;
-      height: 80px;
-      background: var(--nooz-title);
-    }
-
-    .shadow-block {
-      width: 80px;
-      height: 80px;
-      background: var(--nooz-white);
-    }
+    .spacing-block { background: var(--nooz-terracota); height: 28px; }
+    .radius-block { width: 96px; height: 96px; background: var(--nooz-title); }
+    .shadow-block { width: 96px; height: 96px; background: var(--nooz-white); }
 
     /* ── Components ── */
-    .comp-group {
-      padding: 40px;
+    .comp-block {
       background: var(--nooz-white);
       border: 1px solid var(--nooz-dimmed);
+      padding: 56px 48px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
       margin-bottom: 24px;
     }
 
     .nooz-btn {
-      display: inline-block;
       padding: 14px 28px;
-      font-family: 'Mont', sans-serif;
-      font-size: 13px;
+      font-family: inherit;
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -354,31 +568,17 @@
       transition: opacity 0.4s ease;
     }
     .nooz-btn:hover { opacity: 0.7; }
-
     .nooz-btn-primary { background: var(--nooz-terracota); border-color: var(--nooz-terracota); }
     .nooz-btn-outline { background: transparent; color: var(--nooz-title); }
     .nooz-btn-text { background: transparent; border: none; padding: 14px 0; color: var(--nooz-title); }
 
-    .price-demo {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 4px;
-    }
-    .price-demo .amount {
-      font-size: 70px;
-      font-weight: 700;
-      color: var(--nooz-title);
-      line-height: 1;
-    }
-    .price-demo .decimal {
-      font-size: 24px;
-      font-weight: 100;
-      color: var(--nooz-decimal);
-    }
+    .price-demo { display: inline-flex; align-items: baseline; gap: 4px; }
+    .price-demo .amount { font-size: 70px; font-weight: 700; color: var(--nooz-title); line-height: 1; }
+    .price-demo .decimal { font-size: 24px; font-weight: 100; color: var(--nooz-decimal); }
 
     .nooz-pill {
       display: inline-block;
-      padding: 8px 18px;
+      padding: 8px 20px;
       border-radius: 100px;
       background: var(--nooz-light-gray);
       font-size: 11px;
@@ -388,55 +588,132 @@
       color: var(--nooz-title);
     }
 
-    /* ── Iframe previews ── */
+    .input-demo {
+      width: 100%;
+      max-width: 320px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      color: var(--nooz-title);
+      background: var(--nooz-white);
+      border: 1px solid var(--nooz-dimmed);
+      outline: none;
+    }
+    .input-demo:focus { border-color: var(--nooz-title); }
+
+    /* ── Templates ── */
     .preview-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
     .preview-card {
       background: var(--nooz-white);
       border: 1px solid var(--nooz-dimmed);
       overflow: hidden;
+      transition: opacity 0.4s ease;
+    }
+    .preview-card:hover { opacity: 0.92; }
+
+    .preview-card .frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: var(--nooz-light-gray);
+      overflow: hidden;
     }
     .preview-card iframe {
+      position: absolute;
+      top: 0; left: 0;
       width: 100%;
-      height: 360px;
+      height: 100%;
       border: 0;
-      display: block;
+      pointer-events: none;
     }
     .preview-card .caption {
       padding: 16px 20px;
       border-top: 1px solid var(--nooz-dimmed);
-      font-size: 12px;
-      color: var(--nooz-text);
-      letter-spacing: 0.04em;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      letter-spacing: 0.04em;
     }
+    .preview-card .caption .title { color: var(--nooz-title); font-weight: 500; }
     .preview-card .caption a {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .preview-card .placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 11px;
+      color: var(--nooz-decimal);
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    /* Story preview */
-    .story-grid {
+    /* ── Footer ── */
+    footer {
+      margin-top: 160px;
+      padding: 80px 0 60px;
+      border-top: 1px solid var(--nooz-dimmed);
+    }
+    .footer-inner {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 24px;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
     }
-    .story-grid video {
-      width: 100%;
-      aspect-ratio: 9/16;
-      object-fit: cover;
-      border: 1px solid var(--nooz-dimmed);
-      background: var(--nooz-light-gray);
+    footer .brand-block .mark {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--nooz-title);
     }
-    .story-grid .caption {
+    footer .brand-block .tag {
       font-size: 11px;
+      font-weight: 100;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
       color: var(--nooz-decimal);
       margin-top: 8px;
+    }
+    footer .brand-block p {
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--nooz-text);
+      max-width: 280px;
+      line-height: 1.7;
+    }
+    footer .col h5 {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      color: var(--nooz-title);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    footer .col a, footer .col span {
+      display: block;
+      font-size: 12px;
+      color: var(--nooz-text);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+    footer .col a:hover { color: var(--nooz-title); opacity: 1; }
+
+    .footer-base {
+      padding-top: 24px;
+      border-top: 1px solid var(--nooz-dimmed);
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--nooz-decimal);
       letter-spacing: 0.08em;
     }
 
@@ -445,228 +722,293 @@
       position: fixed;
       bottom: 32px;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateY(20px);
       background: var(--nooz-title);
       color: var(--nooz-white);
       padding: 12px 24px;
-      font-size: 12px;
-      letter-spacing: 0.12em;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 99999;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 200;
     }
-    .toast.visible { opacity: 1; }
+    .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    @media (max-width: 900px) {
-      aside { display: none; }
-      main { padding: 40px 24px 100px; }
+    /* ── Filtered out ── */
+    .swatch.hidden, .scale-cell.hidden, .type-row.hidden, .weight.hidden { display: none; }
+
+    @media (max-width: 1024px) {
+      :root { --gutter: 32px; }
+      .hero h1 { font-size: 70px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: none; padding-right: 0; }
+      .stat:nth-child(3) { border-left: 0; padding-left: 0; border-top: 1px solid var(--nooz-dimmed); }
+      .stat:nth-child(4) { border-top: 1px solid var(--nooz-dimmed); }
+      .preview-grid { grid-template-columns: repeat(2, 1fr); }
+      .weights { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --gutter: 20px; }
+      .hero { padding: 48px 0 32px; }
       .hero h1 { font-size: 50px; }
+      .topbar nav { display: none; }
+      .section-header { grid-template-columns: 1fr; gap: 12px; }
+      .section-title h2 { font-size: 36px; }
+      .preview-grid { grid-template-columns: 1fr; }
+      .type-row { grid-template-columns: 1fr; gap: 12px; }
+      .type-row .specs { text-align: left; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .toolbar-meta { display: none; }
+      .format-toggle { display: none; }
     }
   </style>
 </head>
 <body>
-<div class="layout">
-  <aside>
-    <div class="brand">NOOZ</div>
-    <div class="sublabel">Design System</div>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="logo">
+      <span class="mark">NOOZ</span>
+      <span class="label">Design System</span>
+    </div>
     <nav>
-      <a href="#colors" class="active">Colors</a>
+      <a href="#colors">Colors</a>
       <a href="#typography">Typography</a>
       <a href="#spacing">Spacing</a>
-      <a href="#radius">Radius</a>
-      <a href="#shadow">Shadows</a>
       <a href="#components">Components</a>
       <a href="#templates">Templates</a>
     </nav>
-    <div class="footer">
-      v1.0.0<br>
-      Source : nooz-web<br>
-      <a href="tokens/nooz.tokens.json" target="_blank">Tokens JSON</a>
+    <div class="topbar-right">
+      <span class="pill" id="version-pill">v1.0.0</span>
+      <a class="gh" href="https://github.com/nooz-optics/nooz-design-system" target="_blank">GitHub ↗</a>
     </div>
-  </aside>
+  </div>
+</header>
 
-  <main>
-    <header class="hero">
-      <div class="label">Brand Foundations</div>
-      <h1>NOOZ Optics</h1>
-      <p>Design system officiel : couleurs, typographie Mont, spacing, composants. Source de vérité pour tous les artefacts brand — site, POS, packaging, social.</p>
-      <div class="meta">
-        <span>Version<strong id="meta-version">—</strong></span>
-        <span>Updated<strong id="meta-updated">—</strong></span>
-        <span>Tokens<strong id="meta-count">—</strong></span>
+<main>
+  <section class="hero container">
+    <div class="eyebrow">Brand Foundations</div>
+    <h1>NOOZ <em>Optics</em>.<br>Design tokens.</h1>
+    <p class="lead">Référence visuelle officielle : couleurs, typographie Mont, spacing, composants. Source de vérité pour tous les artefacts brand — site, POS, packaging, social, retail.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="v" id="stat-tokens">—</div>
+        <div class="l">Tokens</div>
       </div>
-    </header>
+      <div class="stat">
+        <div class="v" id="stat-colors">—</div>
+        <div class="l">Colors</div>
+      </div>
+      <div class="stat">
+        <div class="v">Mont</div>
+        <div class="l">Type · 4 weights</div>
+      </div>
+      <div class="stat">
+        <div class="v" id="stat-version">v1.0</div>
+        <div class="l">Version</div>
+      </div>
+    </div>
+  </section>
 
-    <section id="colors">
-      <h2>Section 01</h2>
-      <h3>Colors</h3>
-      <p class="lead">Cream, terracota, neutres et catégories. Le terracota est réservé aux CTA et accents — jamais le logo, qui reste noir.</p>
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <div class="search">
+        <input type="text" id="search" placeholder="Rechercher un token (terracota, body, sm…)">
+      </div>
+      <div class="format-toggle" id="format-toggle">
+        <button data-format="hex" class="active">Hex</button>
+        <button data-format="css">CSS var</button>
+        <button data-format="json">JSON</button>
+        <button data-format="js">JS</button>
+      </div>
+      <div class="toolbar-spacer"></div>
+      <span class="toolbar-meta" id="last-updated">—</span>
+    </div>
+  </div>
 
-      <div class="group-title">Brand</div>
+  <div class="container">
+
+    <section class="section" id="colors">
+      <div class="section-header">
+        <div class="section-num">01 / Colors</div>
+        <div class="section-title">
+          <h2>Palette</h2>
+          <p>Cream, terracota, neutres et catégories. Le terracota est réservé aux CTA et accents — jamais le logo, qui reste noir. Click sur un swatch pour copier.</p>
+        </div>
+      </div>
+
+      <div class="group-label">Brand <small>color.brand.*</small></div>
       <div class="swatch-grid" id="colors-brand"></div>
 
-      <div class="group-title">Text</div>
+      <div class="group-label">Text <small>color.text.*</small></div>
       <div class="swatch-grid" id="colors-text"></div>
 
-      <div class="group-title">Neutral</div>
+      <div class="group-label">Neutral <small>color.neutral.*</small></div>
       <div class="swatch-grid" id="colors-neutral"></div>
 
-      <div class="group-title">Accent</div>
+      <div class="group-label">Accent <small>color.accent.*</small></div>
       <div class="swatch-grid" id="colors-accent"></div>
 
-      <div class="group-title">Category</div>
+      <div class="group-label">Category <small>color.category.*</small></div>
       <div class="swatch-grid" id="colors-category"></div>
 
-      <div class="group-title">Semantic (aliases)</div>
+      <div class="group-label">Semantic aliases <small>color.semantic.*</small></div>
       <div class="swatch-grid" id="colors-semantic"></div>
     </section>
 
-    <section id="typography">
-      <h2>Section 02</h2>
-      <h3>Typography</h3>
-      <p class="lead">Mont — 4 graisses (Light 100, Regular 300, Semibold 500, Bold 700). Le 900 fallback sur 700. Échelle stricte de 10 à 70px.</p>
+    <section class="section" id="typography">
+      <div class="section-header">
+        <div class="section-num">02 / Type</div>
+        <div class="section-title">
+          <h2>Typography</h2>
+          <p>Mont — quatre graisses (Light 100, Regular 300, Semibold 500, Bold 700). La graisse 900 fallback sur 700. Échelle stricte de 10 à 70px.</p>
+        </div>
+      </div>
 
-      <div class="group-title">Weights</div>
-      <div class="weight-grid" id="weights"></div>
+      <div class="group-label">Weights <small>typography.weight.*</small></div>
+      <div class="weights" id="weights"></div>
 
-      <div class="group-title">Text styles</div>
-      <div id="styles"></div>
+      <div class="group-label">Text styles <small>typography.style.*</small></div>
+      <div class="type-list" id="styles"></div>
 
-      <div class="group-title">Size scale</div>
-      <div id="sizes"></div>
+      <div class="group-label">Size scale <small>typography.size.*</small></div>
+      <div class="type-list" id="sizes"></div>
     </section>
 
-    <section id="spacing">
-      <h2>Section 03</h2>
-      <h3>Spacing</h3>
-      <p class="lead">Échelle de spacing — gap dominant : 16px (md). Containers : 64px desktop / 32px tablet / 16px mobile.</p>
-      <div class="scale-grid" id="spacings"></div>
+    <section class="section" id="spacing">
+      <div class="section-header">
+        <div class="section-num">03 / Space</div>
+        <div class="section-title">
+          <h2>Spacing</h2>
+          <p>Échelle de spacing — gap dominant : 16px (md). Containers : 64px desktop · 32px tablet · 16px mobile.</p>
+        </div>
+      </div>
+      <div class="scale-row" id="spacings"></div>
     </section>
 
-    <section id="radius">
-      <h2>Section 04</h2>
-      <h3>Radius</h3>
-      <p class="lead">Border radius par défaut = 0 (signature angulaire NOOZ). Exceptions documentées : pickers (md), selection (lg), pills (100px).</p>
-      <div class="scale-grid" id="radii"></div>
+    <section class="section" id="radius">
+      <div class="section-header">
+        <div class="section-num">04 / Radius</div>
+        <div class="section-title">
+          <h2>Radius</h2>
+          <p>Border radius par défaut = 0 (signature angulaire NOOZ). Exceptions documentées : pickers (md), selection cards (lg), pills (100px).</p>
+        </div>
+      </div>
+      <div class="scale-row" id="radii"></div>
     </section>
 
-    <section id="shadow">
-      <h2>Section 05</h2>
-      <h3>Shadows</h3>
-      <p class="lead">Shadows quasi-plates, jamais au-delà de rgba(0,0,0,0.05). Pas de drop-shadow agressif.</p>
-      <div class="scale-grid" id="shadows"></div>
+    <section class="section" id="shadow">
+      <div class="section-header">
+        <div class="section-num">05 / Shadow</div>
+        <div class="section-title">
+          <h2>Shadows</h2>
+          <p>Shadows quasi-plates, jamais au-delà de rgba(0,0,0,0.05). Pas de drop-shadow agressif.</p>
+        </div>
+      </div>
+      <div class="scale-row" id="shadows"></div>
     </section>
 
-    <section id="components">
-      <h2>Section 06</h2>
-      <h3>Components</h3>
-      <p class="lead">Composants signature NOOZ. Les versions JSX/Mantine vivent dans <a href="ui_kits/web/" target="_blank">ui_kits/web/</a>.</p>
+    <section class="section" id="components">
+      <div class="section-header">
+        <div class="section-num">06 / UI</div>
+        <div class="section-title">
+          <h2>Components</h2>
+          <p>Composants signature NOOZ. Les versions JSX/Mantine vivent dans le repo nooz-web.</p>
+        </div>
+      </div>
 
-      <div class="group-title">Buttons</div>
-      <div class="comp-group">
+      <div class="group-label">Buttons</div>
+      <div class="comp-block">
         <button class="nooz-btn nooz-btn-primary">Acheter</button>
-        &nbsp;&nbsp;
         <button class="nooz-btn">Default</button>
-        &nbsp;&nbsp;
         <button class="nooz-btn nooz-btn-outline">Outline</button>
-        &nbsp;&nbsp;
         <button class="nooz-btn nooz-btn-text">Text →</button>
       </div>
 
-      <div class="group-title">Price block</div>
-      <div class="comp-group">
+      <div class="group-label">Price block</div>
+      <div class="comp-block">
         <div class="price-demo">
           <span class="amount">29</span>
-          <span class="decimal">,00 €</span>
+          <span class="decimal">,00&nbsp;€</span>
+        </div>
+        <div class="price-demo">
+          <span class="amount" style="font-size:50px">19</span>
+          <span class="decimal">,00&nbsp;€</span>
         </div>
       </div>
 
-      <div class="group-title">Pills</div>
-      <div class="comp-group">
-        <span class="nooz-pill">Club House</span>
-        &nbsp;&nbsp;
+      <div class="group-label">Pills · Category</div>
+      <div class="comp-block">
+        <span class="nooz-pill">Default</span>
         <span class="nooz-pill" style="background:#FEAE00; color:#fff;">Sun</span>
-        &nbsp;&nbsp;
         <span class="nooz-pill" style="background:#731520; color:#fff;">Reading</span>
-        &nbsp;&nbsp;
+        <span class="nooz-pill" style="background:#1C5FAB; color:#fff;">Bluelight</span>
         <span class="nooz-pill" style="background:#194733; color:#fff;">Club House</span>
+        <span class="nooz-pill" style="background:#FC6806; color:#fff;">Kids</span>
+        <span class="nooz-pill" style="background:#61B232; color:#fff;">Sport</span>
+      </div>
+
+      <div class="group-label">Inputs</div>
+      <div class="comp-block">
+        <input type="text" class="input-demo" placeholder="Texte placeholder">
+        <input type="email" class="input-demo" placeholder="email@nooz-optics.com">
       </div>
     </section>
 
-    <section id="templates">
-      <h2>Section 07</h2>
-      <h3>Templates &amp; previews</h3>
-      <p class="lead">Cards de revue détaillées : <a href="preview/" target="_blank">preview/</a> · UI kits : <a href="ui_kits/web/" target="_blank">web</a> · <a href="ui_kits/instagram/" target="_blank">instagram</a></p>
-
-      <div class="group-title">Preview cards</div>
-      <div class="preview-grid">
-        <div class="preview-card">
-          <iframe src="preview/colors-core.html"></iframe>
-          <div class="caption">Colors — core <a href="preview/colors-core.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/colors-categories.html"></iframe>
-          <div class="caption">Colors — categories <a href="preview/colors-categories.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/type-family.html"></iframe>
-          <div class="caption">Type — family <a href="preview/type-family.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/type-scale.html"></iframe>
-          <div class="caption">Type — scale <a href="preview/type-scale.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/buttons.html"></iframe>
-          <div class="caption">Buttons <a href="preview/buttons.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/badges.html"></iframe>
-          <div class="caption">Badges <a href="preview/badges.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/inputs.html"></iframe>
-          <div class="caption">Inputs <a href="preview/inputs.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/icons.html"></iframe>
-          <div class="caption">Icons <a href="preview/icons.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/logo.html"></iframe>
-          <div class="caption">Logo <a href="preview/logo.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/header.html"></iframe>
-          <div class="caption">Header <a href="preview/header.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/product-cards.html"></iframe>
-          <div class="caption">Product cards <a href="preview/product-cards.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/price.html"></iframe>
-          <div class="caption">Price <a href="preview/price.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/spacing.html"></iframe>
-          <div class="caption">Spacing <a href="preview/spacing.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/radii.html"></iframe>
-          <div class="caption">Radii <a href="preview/radii.html" target="_blank">Open ↗</a></div>
-        </div>
-        <div class="preview-card">
-          <iframe src="preview/shadows.html"></iframe>
-          <div class="caption">Shadows <a href="preview/shadows.html" target="_blank">Open ↗</a></div>
+    <section class="section" id="templates">
+      <div class="section-header">
+        <div class="section-num">07 / Apps</div>
+        <div class="section-title">
+          <h2>Templates &amp; previews</h2>
+          <p>Cards de revue détaillées. Les iframes se chargent quand elles deviennent visibles (lazy).</p>
         </div>
       </div>
+
+      <div class="preview-grid" id="previews"></div>
     </section>
 
-  </main>
-</div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="brand-block">
+          <div class="mark">NOOZ</div>
+          <div class="tag">Design System</div>
+          <p>NOOZ Optics — fondée en 2018 à Bruxelles. Des lunettes essentielles, accessibles, bien designées.</p>
+        </div>
+        <div class="col">
+          <h5>Resources</h5>
+          <a href="tokens/nooz.tokens.json" target="_blank">Tokens JSON</a>
+          <a href="colors_and_type.css" target="_blank">CSS variables</a>
+          <a href="preview/" target="_blank">Preview cards</a>
+        </div>
+        <div class="col">
+          <h5>Code</h5>
+          <a href="https://github.com/nooz-optics/nooz-design-system" target="_blank">GitHub repo</a>
+          <a href="https://github.com/nooz-optics/nooz-web" target="_blank">nooz-web</a>
+          <a href="https://nooz-optics.com" target="_blank">nooz-optics.com</a>
+        </div>
+        <div class="col">
+          <h5>Brand</h5>
+          <span>Antoine Doolaeghe</span>
+          <span>Directeur Créatif</span>
+          <a href="mailto:adoolaeghe@nooz-optics.com">Contact</a>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span id="footer-version">v1.0.0 · Updated —</span>
+        <span>© 2026 NOOZ Optics</span>
+      </div>
+    </div>
+  </footer>
+</main>
 
 <div class="toast" id="toast">Copied</div>
 
@@ -690,18 +1032,33 @@
       if (!cur) return val;
       cur = cur[seg];
     }
-    return cur && cur.$value ? resolveRef(cur.$value, root) : val;
+    return cur && cur.$value !== undefined ? resolveRef(cur.$value, root) : val;
   };
 
   const copy = (text) => {
     navigator.clipboard.writeText(text);
     const t = document.getElementById('toast');
-    t.textContent = `Copied  ${text}`;
+    t.textContent = `Copied — ${text}`;
     t.classList.add('visible');
-    setTimeout(() => t.classList.remove('visible'), 1500);
+    clearTimeout(window._toastT);
+    window._toastT = setTimeout(() => t.classList.remove('visible'), 1600);
   };
 
-  const renderSwatches = (containerId, group, root) => {
+  let CURRENT_FORMAT = 'hex';
+  const tokenAs = (groupPath, name, value) => {
+    switch (CURRENT_FORMAT) {
+      case 'css': {
+        const cssName = '--nooz-' + name.replace(/\./g, '-').replace(/_/g, '-');
+        return `var(${cssName})`;
+      }
+      case 'json': return `{${groupPath}.${name}}`;
+      case 'js': return `tokens.${groupPath.replace(/-/g, '_')}.${name.replace(/-/g, '_')}`;
+      case 'hex':
+      default: return value;
+    }
+  };
+
+  const renderSwatches = (containerId, group, root, groupPath) => {
     const c = document.getElementById(containerId);
     if (!c || !group) return;
     c.innerHTML = '';
@@ -709,12 +1066,17 @@
       const value = resolveRef(token.$value, root);
       const div = document.createElement('div');
       div.className = 'swatch' + (isLight(value) ? ' is-light' : '');
-      div.onclick = () => copy(value);
+      div.dataset.search = `${name} ${value} ${token.$description || ''}`.toLowerCase();
+      div.onclick = () => copy(tokenAs(groupPath, name, value));
       div.innerHTML = `
-        <div class="chip" style="background:${value}"></div>
-        <div class="name">${name}</div>
-        <div class="hex">${value}</div>
-        ${token.$description ? `<div class="desc">${token.$description}</div>` : ''}
+        <div class="chip" style="background:${value}">
+          <span class="copy-btn">Copy</span>
+        </div>
+        <div class="info">
+          <div class="name">${name}</div>
+          <div class="hex">${value}</div>
+          ${token.$description ? `<div class="desc">${token.$description}</div>` : ''}
+        </div>
       `;
       c.appendChild(div);
     });
@@ -722,15 +1084,17 @@
 
   const renderWeights = (root) => {
     const c = document.getElementById('weights');
-    const weights = root.typography.weight;
-    Object.entries(weights).forEach(([name, token]) => {
+    c.innerHTML = '';
+    Object.entries(root.typography.weight).forEach(([name, token]) => {
       const w = token.$value;
       const div = document.createElement('div');
-      div.className = 'weight-card';
+      div.className = 'weight';
+      div.dataset.search = `${name} weight ${w}`.toLowerCase();
       div.onclick = () => copy(`font-weight: ${w}`);
       div.innerHTML = `
         <div class="demo" style="font-weight:${w}">Aa</div>
-        <div class="meta">${name} · ${w}</div>
+        <div class="name">${name}</div>
+        <div class="num">${w}${token.$description ? ' · ' + token.$description : ''}</div>
       `;
       c.appendChild(div);
     });
@@ -738,28 +1102,34 @@
 
   const renderStyles = (root) => {
     const c = document.getElementById('styles');
-    const styles = root.typography.style;
-    Object.entries(styles).forEach(([name, token]) => {
+    c.innerHTML = '';
+    const samples = {
+      display: 'NOOZ — Optics simplified',
+      h1: "L'essentiel de tous les jours",
+      h2: 'Une collection signature',
+      h3: 'Format poche, format vie',
+      h4: 'Découvrir la collection',
+      body: 'Body — Mont 14px / 400 / line-height 1.55. Le défaut pour le corps de texte sur tous nos supports.',
+      small: 'Small — pour annotations, légendes, métadonnées',
+      caption: 'CAPTION TEXT — UPPERCASE'
+    };
+    Object.entries(root.typography.style).forEach(([name, token]) => {
       const v = token.$value;
       const fontSize = resolveRef(v.fontSize, root);
       const fontWeight = resolveRef(v.fontWeight, root);
       const lh = resolveRef(v.lineHeight, root);
       const ls = v.letterSpacing || 'normal';
-      const sample = name === 'caption' ? 'Caption text uppercase' :
-                     name === 'small' ? 'Small body — pour annotations' :
-                     name === 'body' ? 'Body — Mont 14px / 400 / line-height 1.55' :
-                     name === 'h4' ? 'Heading 4' :
-                     name === 'h3' ? 'Heading 3' :
-                     name === 'h2' ? 'Heading 2' :
-                     name === 'h1' ? 'Heading 1' :
-                     'Display NOOZ';
       const div = document.createElement('div');
       div.className = 'type-row';
+      div.dataset.search = `${name} style ${fontSize} ${fontWeight}`.toLowerCase();
       div.onclick = () => copy(`font-size: ${fontSize}; font-weight: ${fontWeight}; line-height: ${lh};`);
       div.innerHTML = `
-        <div class="type-name">${name}<small>${fontSize} · ${fontWeight}</small></div>
-        <div class="type-sample" style="font-size:${fontSize}; font-weight:${fontWeight}; line-height:${lh}; letter-spacing:${ls}">${sample}</div>
-        <div class="type-meta">${fontSize}<br>w${fontWeight}<br>lh${lh}</div>
+        <div class="name-block">
+          <div class="name">${name}</div>
+          <div class="meta">${fontSize} · w${fontWeight}</div>
+        </div>
+        <div class="sample" style="font-size:${fontSize}; font-weight:${fontWeight}; line-height:${lh}; letter-spacing:${ls}">${samples[name] || 'NOOZ'}</div>
+        <div class="specs">${fontSize}<br>weight ${fontWeight}<br>lh ${lh}</div>
       `;
       c.appendChild(div);
     });
@@ -767,41 +1137,51 @@
 
   const renderSizes = (root) => {
     const c = document.getElementById('sizes');
-    const sizes = root.typography.size;
-    Object.entries(sizes).forEach(([name, token]) => {
+    c.innerHTML = '';
+    Object.entries(root.typography.size).forEach(([name, token]) => {
       const v = token.$value;
       const div = document.createElement('div');
       div.className = 'type-row';
+      div.dataset.search = `${name} size ${v}`.toLowerCase();
       div.onclick = () => copy(v);
       div.innerHTML = `
-        <div class="type-name">${name}px${token.$description ? `<small>${token.$description}</small>` : ''}</div>
-        <div class="type-sample" style="font-size:${v}; font-weight:400">Mont — ${v}</div>
-        <div class="type-meta">${v}</div>
+        <div class="name-block">
+          <div class="name">${name}px</div>
+          <div class="meta">${token.$description || 'Size'}</div>
+        </div>
+        <div class="sample" style="font-size:${v}; font-weight:400">Mont — ${v}</div>
+        <div class="specs">${v}</div>
       `;
       c.appendChild(div);
     });
   };
 
+  const flatTokens = (obj, prefix = '') => {
+    const out = {};
+    Object.entries(obj).forEach(([k, v]) => {
+      if (k.startsWith('$')) return;
+      if (v && typeof v === 'object') {
+        if (v.$value !== undefined) out[prefix + k] = v;
+        else Object.assign(out, flatTokens(v, prefix + k + '.'));
+      }
+    });
+    return out;
+  };
+
   const renderSpacings = (root) => {
     const c = document.getElementById('spacings');
-    const flat = (obj, prefix = '') => {
-      const out = {};
-      Object.entries(obj).forEach(([k, v]) => {
-        if (v.$value !== undefined) out[prefix + k] = v;
-        else Object.entries(flat(v, prefix + k + '.')).forEach(([k2, v2]) => out[k2] = v2);
-      });
-      return out;
-    };
-    Object.entries(flat(root.spacing)).forEach(([name, token]) => {
+    c.innerHTML = '';
+    Object.entries(flatTokens(root.spacing)).forEach(([name, token]) => {
       const v = token.$value;
       const div = document.createElement('div');
-      div.className = 'scale-item';
+      div.className = 'scale-cell';
+      div.dataset.search = `${name} spacing ${v}`.toLowerCase();
       div.onclick = () => copy(v);
       div.innerHTML = `
         <div class="visual"><div class="spacing-block" style="width:${v}; min-width:4px;"></div></div>
         <div class="name">${name}</div>
         <div class="value">${v}</div>
-        ${token.$description ? `<div class="value">${token.$description}</div>` : ''}
+        ${token.$description ? `<div class="desc">${token.$description}</div>` : ''}
       `;
       c.appendChild(div);
     });
@@ -809,16 +1189,18 @@
 
   const renderRadii = (root) => {
     const c = document.getElementById('radii');
+    c.innerHTML = '';
     Object.entries(root.radius).forEach(([name, token]) => {
       const v = token.$value;
       const div = document.createElement('div');
-      div.className = 'scale-item';
+      div.className = 'scale-cell';
+      div.dataset.search = `${name} radius ${v}`.toLowerCase();
       div.onclick = () => copy(v);
       div.innerHTML = `
         <div class="visual"><div class="radius-block" style="border-radius:${v}"></div></div>
         <div class="name">${name}</div>
         <div class="value">${v}</div>
-        ${token.$description ? `<div class="value">${token.$description}</div>` : ''}
+        ${token.$description ? `<div class="desc">${token.$description}</div>` : ''}
       `;
       c.appendChild(div);
     });
@@ -826,76 +1208,162 @@
 
   const renderShadows = (root) => {
     const c = document.getElementById('shadows');
+    c.innerHTML = '';
     Object.entries(root.shadow).forEach(([name, token]) => {
       const v = token.$value;
       const div = document.createElement('div');
-      div.className = 'scale-item';
+      div.className = 'scale-cell';
+      div.dataset.search = `${name} shadow`.toLowerCase();
       div.onclick = () => copy(v);
       div.innerHTML = `
         <div class="visual"><div class="shadow-block" style="box-shadow:${v}"></div></div>
         <div class="name">${name}</div>
-        <div class="value" style="font-size:10px;">${v}</div>
+        <div class="value" style="font-size:10px; word-break:break-all;">${v.length > 40 ? v.slice(0, 38) + '…' : v}</div>
       `;
       c.appendChild(div);
     });
   };
 
-  // Active section nav
+  // ── Lazy-load preview iframes ──
+  const PREVIEWS = [
+    { src: 'preview/colors-core.html', title: 'Colors core' },
+    { src: 'preview/colors-categories.html', title: 'Colors categories' },
+    { src: 'preview/type-family.html', title: 'Type family' },
+    { src: 'preview/type-scale.html', title: 'Type scale' },
+    { src: 'preview/buttons.html', title: 'Buttons' },
+    { src: 'preview/badges.html', title: 'Badges' },
+    { src: 'preview/inputs.html', title: 'Inputs' },
+    { src: 'preview/icons.html', title: 'Icons' },
+    { src: 'preview/logo.html', title: 'Logo' },
+    { src: 'preview/header.html', title: 'Header' },
+    { src: 'preview/product-cards.html', title: 'Product cards' },
+    { src: 'preview/price.html', title: 'Price' },
+    { src: 'preview/spacing.html', title: 'Spacing' },
+    { src: 'preview/radii.html', title: 'Radii' },
+    { src: 'preview/shadows.html', title: 'Shadows' }
+  ];
+
+  const renderPreviews = () => {
+    const c = document.getElementById('previews');
+    PREVIEWS.forEach(p => {
+      const div = document.createElement('div');
+      div.className = 'preview-card';
+      div.innerHTML = `
+        <div class="frame" data-src="${p.src}">
+          <div class="placeholder">Loading…</div>
+        </div>
+        <div class="caption">
+          <span class="title">${p.title}</span>
+          <a href="${p.src}" target="_blank">Open ↗</a>
+        </div>
+      `;
+      c.appendChild(div);
+    });
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const frame = e.target;
+          const src = frame.dataset.src;
+          if (frame.querySelector('iframe')) return;
+          const iframe = document.createElement('iframe');
+          iframe.src = src;
+          iframe.loading = 'lazy';
+          frame.appendChild(iframe);
+          io.unobserve(frame);
+        }
+      });
+    }, { rootMargin: '200px' });
+
+    document.querySelectorAll('.preview-card .frame').forEach(f => io.observe(f));
+  };
+
+  const initSearch = () => {
+    const input = document.getElementById('search');
+    const all = () => document.querySelectorAll('.swatch, .scale-cell, .type-row, .weight');
+    input.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      all().forEach(el => {
+        const match = !q || (el.dataset.search && el.dataset.search.includes(q));
+        el.classList.toggle('hidden', !match);
+      });
+      document.querySelectorAll('.swatch-grid, .scale-row, .type-list, .weights').forEach(g => {
+        const items = g.querySelectorAll('.swatch, .scale-cell, .type-row, .weight');
+        const hasVisible = Array.from(items).some(i => !i.classList.contains('hidden'));
+        const label = g.previousElementSibling;
+        if (label && label.classList.contains('group-label')) {
+          label.style.display = hasVisible || items.length === 0 ? '' : 'none';
+        }
+      });
+    });
+  };
+
+  const initFormatToggle = () => {
+    document.querySelectorAll('#format-toggle button').forEach(b => {
+      b.addEventListener('click', () => {
+        document.querySelectorAll('#format-toggle button').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        CURRENT_FORMAT = b.dataset.format;
+      });
+    });
+  };
+
   const initNav = () => {
-    const links = document.querySelectorAll('aside nav a');
+    const links = document.querySelectorAll('.topbar nav a');
     const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href')));
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           links.forEach(l => l.classList.remove('active'));
-          const link = document.querySelector(`aside nav a[href="#${entry.target.id}"]`);
+          const link = document.querySelector(`.topbar nav a[href="#${entry.target.id}"]`);
           if (link) link.classList.add('active');
         }
       });
-    }, { rootMargin: '-30% 0px -60% 0px' });
+    }, { rootMargin: '-20% 0px -70% 0px' });
     sections.forEach(s => s && observer.observe(s));
   };
 
-  fetch('tokens/nooz.tokens.json')
+  fetch('tokens/nooz.tokens.json?t=' + Date.now())
     .then(r => r.json())
     .then(tokens => {
-      // Meta
-      document.getElementById('meta-version').textContent = tokens.$metadata?.version || '—';
-      document.getElementById('meta-updated').textContent = tokens.$metadata?.exportedAt || '—';
-      const flatCount = (o) => {
-        let n = 0;
-        for (const v of Object.values(o)) {
-          if (v && typeof v === 'object') {
-            if (v.$value !== undefined) n++;
-            else if (!String(Object.keys(v)[0] || '').startsWith('$')) n += flatCount(v);
-          }
-        }
-        return n;
+      const counts = {
+        all: Object.keys(flatTokens(tokens)).length,
+        colors: Object.keys(flatTokens(tokens.color)).length
       };
-      document.getElementById('meta-count').textContent = flatCount(tokens);
+      document.getElementById('stat-tokens').textContent = counts.all;
+      document.getElementById('stat-colors').textContent = counts.colors;
+      const v = tokens.$metadata?.version || '1.0.0';
+      const updated = tokens.$metadata?.exportedAt || '—';
+      document.getElementById('stat-version').textContent = 'v' + v;
+      document.getElementById('version-pill').textContent = 'v' + v;
+      document.getElementById('last-updated').textContent = `Updated ${updated}`;
+      document.getElementById('footer-version').textContent = `v${v} · Updated ${updated}`;
 
-      // Colors
-      renderSwatches('colors-brand', tokens.color.brand, tokens);
-      renderSwatches('colors-text', tokens.color.text, tokens);
-      renderSwatches('colors-neutral', tokens.color.neutral, tokens);
-      renderSwatches('colors-accent', tokens.color.accent, tokens);
-      renderSwatches('colors-category', tokens.color.category, tokens);
-      renderSwatches('colors-semantic', tokens.color.semantic, tokens);
+      renderSwatches('colors-brand', tokens.color.brand, tokens, 'color.brand');
+      renderSwatches('colors-text', tokens.color.text, tokens, 'color.text');
+      renderSwatches('colors-neutral', tokens.color.neutral, tokens, 'color.neutral');
+      renderSwatches('colors-accent', tokens.color.accent, tokens, 'color.accent');
+      renderSwatches('colors-category', tokens.color.category, tokens, 'color.category');
+      renderSwatches('colors-semantic', tokens.color.semantic, tokens, 'color.semantic');
 
-      // Typography
       renderWeights(tokens);
       renderStyles(tokens);
       renderSizes(tokens);
-
-      // Scales
       renderSpacings(tokens);
       renderRadii(tokens);
       renderShadows(tokens);
 
+      renderPreviews();
+      initSearch();
+      initFormatToggle();
       initNav();
     })
     .catch(err => {
-      document.querySelector('main').innerHTML = `<h1 style="color:#FA5252">Erreur chargement tokens</h1><pre>${err.message}</pre>`;
+      document.querySelector('main').innerHTML = `
+        <div class="container" style="padding:80px 0">
+          <h1 style="color:#FA5252; font-size: 32px; margin-bottom: 16px">Erreur chargement tokens</h1>
+          <pre style="background: #fff; padding: 24px; border: 1px solid #D1D1D1; font-size: 12px; overflow-x: auto;">${err.message}</pre>
+        </div>`;
     });
 </script>
 </body>
