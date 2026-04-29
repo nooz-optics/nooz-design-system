@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+  body{margin:0;padding:22px;background:#FCFAFA;font-family:'Mont',sans-serif;display:flex;flex-direction:column;gap:10px}
+  .p{display:flex;align-items:baseline;gap:4px}
+  .lbl{min-width:72px;font-size:10px;color:#8D8D8D;text-transform:uppercase;letter-spacing:0.05em}
+  .int{font-size:28px;font-weight:900;color:#2D2D2D;font-variant-numeric:tabular-nums}
+  .dec{font-size:13px;font-weight:100;color:#8D8D8D}
+  .was{text-decoration:line-through;color:#8D8D8D;font-size:13px;margin-left:8px;font-weight:400}
+  .chip{display:inline-flex;padding:2px 8px;border-radius:100px;background:#EF233C;color:#fff;font-size:10px;font-weight:500;margin-left:8px}
+</style></head><body>
+<div class="p"><span class="lbl">Default</span><span class="int">29</span><span class="dec">.95 €</span></div>
+<div class="p"><span class="lbl">On sale</span><span class="int" style="color:#EF233C">19</span><span class="dec" style="color:#EF233C">.95 €</span><span class="was">29.95 €</span><span class="chip">−30%</span></div>
+<div class="p"><span class="lbl">Pre-order</span><span class="int">39</span><span class="dec">.95 €</span><span class="chip" style="background:#D1D1D1;color:#2D2D2D">Pre-order</span></div>
+<div style="font-size:10px;color:#8D8D8D;margin-top:6px">Whole number: weight 900 · Decimal + currency: weight 100, muted — signature treatment</div>
+</body></html>

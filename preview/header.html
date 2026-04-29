@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+  body{margin:0;padding:0;background:#FCFAFA;font-family:'Mont',sans-serif}
+  /* Top promo banner — black, single promo link */
+  .promo{background:#000;color:#fff;height:32px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;letter-spacing:0.02em}
+  .promo b{font-weight:700}
+  .promo .pipe{opacity:0.5}
+  /* Main nav row — logo centered, left links, right utilities */
+  .nav{background:#fff;height:64px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 32px;gap:32px}
+  .links-l{display:flex;gap:24px;font-size:13px;color:#2D2D2D;font-weight:400}
+  .links-l a{text-decoration:none;color:inherit;cursor:pointer}
+  .logo{height:22px;justify-self:center}
+  .util{justify-self:end;display:flex;align-items:center;gap:20px;font-size:13px;color:#2D2D2D}
+  .util a{text-decoration:none;color:inherit;cursor:pointer}
+  .util .flag{width:18px;height:14px;object-fit:cover;border:1px solid rgba(0,0,0,0.08);display:inline-block}
+  .util .bag{display:inline-flex;align-items:center;gap:6px;color:#2D2D2D}
+  .util svg{stroke:#2D2D2D;fill:none;stroke-width:1.5}
+  .util .chev{stroke:#585858;width:10px;height:10px}
+</style></head>
+<body>
+<div class="promo"><b>NEW</b><span class="pipe">|</span>Club House Collection</div>
+<div class="nav">
+  <nav class="links-l">
+    <a>Reading</a>
+    <a>Sun</a>
+    <a>Blue light</a>
+    <a>Multi-distance™</a>
+    <a>New arrivals</a>
+  </nav>
+  <img class="logo" src="../assets/logo-black.svg" alt="Nooz">
+  <div class="util">
+    <a>Stores</a>
+    <a>Help</a>
+    <span style="display:inline-flex;align-items:center;gap:6px"><span class="flag" style="background:linear-gradient(to bottom,#B22234 0 7.7%,#fff 7.7% 15.4%,#B22234 15.4% 23.1%,#fff 23.1% 30.8%,#B22234 30.8% 38.5%,#fff 38.5% 46.2%,#B22234 46.2% 53.8%,#fff 53.8% 61.5%,#B22234 61.5% 69.2%,#fff 69.2% 76.9%,#B22234 76.9% 84.6%,#fff 84.6% 92.3%,#B22234 92.3% 100%);position:relative"><span style="position:absolute;top:0;left:0;width:44%;height:53.8%;background:#3C3B6E"></span></span><svg class="chev" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+    <svg viewBox="0 0 24 24" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span class="bag"><svg viewBox="0 0 24 24" width="20" height="20" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+  </div>
+</div>
+</body></html>

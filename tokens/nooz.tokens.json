@@ -1,0 +1,221 @@
+{
+  "$schema": "https://tokens.studio/schemas/v1/schema.json",
+  "$description": "Nooz Optics — Design Tokens (W3C DTCG format). Compatible with Figma Tokens Studio, Style Dictionary, Tailwind via @theme, Tokens Studio CLI. Extracted from nooz-web/src/styles/NoozTheme.ts + app.css.",
+  "$metadata": {
+    "version": "1.0.0",
+    "source": "nooz-web repository",
+    "exportedAt": "2026-04-19"
+  },
+
+  "color": {
+    "brand": {
+      "terracota":  { "$value": "#DC693B", "$type": "color", "$description": "Primary — CTAs, links, accents" },
+      "black":      { "$value": "#000000", "$type": "color" },
+      "white":      { "$value": "#FFFFFF", "$type": "color" },
+      "background": { "$value": "#FCFAFA", "$type": "color", "$description": "Page background" }
+    },
+    "text": {
+      "title":        { "$value": "#2D2D2D", "$type": "color", "$description": "Headings" },
+      "title-dimmed": { "$value": "#454545", "$type": "color" },
+      "body":         { "$value": "#585858", "$type": "color" },
+      "muted":        { "$value": "#8D8D8D", "$type": "color", "$description": "Prices decimals, captions" }
+    },
+    "neutral": {
+      "light-gray": { "$value": "#F5F5F5", "$type": "color" },
+      "dimmed":     { "$value": "#D1D1D1", "$type": "color", "$description": "Borders" },
+      "media-bg":   { "$value": "#F1ECEE", "$type": "color", "$description": "Product media background" }
+    },
+    "accent": {
+      "main":   { "$value": "#1C5FAB", "$type": "color" },
+      "yellow": { "$value": "#FDF185", "$type": "color" },
+      "error":  { "$value": "#FA5252", "$type": "color" }
+    },
+    "category": {
+      "sun":                         { "$value": "#FEAE00", "$type": "color" },
+      "reading":                     { "$value": "#731520", "$type": "color" },
+      "bluelight":                   { "$value": "#1C5FAB", "$type": "color" },
+      "kids":                        { "$value": "#FC6806", "$type": "color" },
+      "sport":                       { "$value": "#61B232", "$type": "color" },
+      "original":                    { "$value": "#EF233C", "$type": "color" },
+      "club-house":                  { "$value": "#194733", "$type": "color" },
+      "reading-sun":                 { "$value": "#B0A089", "$type": "color" },
+      "reading-sun-bifocal":         { "$value": "#826C4E", "$type": "color" },
+      "reading-degressive":          { "$value": "#4D6E41", "$type": "color" },
+      "reading-degressive-bluelight":{ "$value": "#826C4E", "$type": "color" },
+      "reading-bluelight":           { "$value": "#143963", "$type": "color" }
+    },
+    "semantic": {
+      "fg-1":    { "$value": "{color.text.title}",        "$type": "color" },
+      "fg-2":    { "$value": "{color.text.body}",         "$type": "color" },
+      "fg-3":    { "$value": "{color.text.muted}",        "$type": "color" },
+      "bg-1":    { "$value": "{color.brand.background}",  "$type": "color" },
+      "bg-2":    { "$value": "{color.brand.white}",       "$type": "color" },
+      "bg-3":    { "$value": "{color.neutral.light-gray}","$type": "color" },
+      "border":  { "$value": "{color.neutral.dimmed}",    "$type": "color" },
+      "accent":  { "$value": "{color.brand.terracota}",   "$type": "color" }
+    }
+  },
+
+  "typography": {
+    "family": {
+      "sans": {
+        "$value": "Mont, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif",
+        "$type": "fontFamily"
+      }
+    },
+    "weight": {
+      "thin":     { "$value": 100, "$type": "fontWeight" },
+      "light":    { "$value": 300, "$type": "fontWeight" },
+      "regular":  { "$value": 400, "$type": "fontWeight" },
+      "medium":   { "$value": 500, "$type": "fontWeight" },
+      "semibold": { "$value": 600, "$type": "fontWeight" },
+      "bold":     { "$value": 700, "$type": "fontWeight" },
+      "black":    { "$value": 900, "$type": "fontWeight", "$description": "No 900 cut in Mont — falls back to 700" }
+    },
+    "size": {
+      "10": { "$value": "10px", "$type": "dimension" },
+      "11": { "$value": "11px", "$type": "dimension" },
+      "12": { "$value": "12px", "$type": "dimension" },
+      "13": { "$value": "13px", "$type": "dimension" },
+      "14": { "$value": "14px", "$type": "dimension", "$description": "Body default" },
+      "18": { "$value": "18px", "$type": "dimension" },
+      "24": { "$value": "24px", "$type": "dimension" },
+      "28": { "$value": "28px", "$type": "dimension" },
+      "34": { "$value": "34px", "$type": "dimension" },
+      "42": { "$value": "42px", "$type": "dimension" },
+      "50": { "$value": "50px", "$type": "dimension" },
+      "70": { "$value": "70px", "$type": "dimension" }
+    },
+    "line-height": {
+      "tight": { "$value": 1.0,  "$type": "number" },
+      "body":  { "$value": 1.55, "$type": "number" }
+    },
+    "style": {
+      "display": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontWeight": "{typography.weight.black}",
+          "fontSize":   "{typography.size.70}",
+          "lineHeight": "{typography.line-height.tight}",
+          "letterSpacing": "-0.01em"
+        }
+      },
+      "h1": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontWeight": "{typography.weight.medium}",
+          "fontSize":   "{typography.size.42}",
+          "lineHeight": "{typography.line-height.tight}"
+        }
+      },
+      "h2": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontWeight": "{typography.weight.medium}",
+          "fontSize":   "{typography.size.34}",
+          "lineHeight": "{typography.line-height.tight}"
+        }
+      },
+      "h3": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontWeight": "{typography.weight.medium}",
+          "fontSize":   "{typography.size.28}",
+          "lineHeight": "{typography.line-height.body}"
+        }
+      },
+      "h4": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontWeight": "{typography.weight.semibold}",
+          "fontSize":   "{typography.size.24}",
+          "lineHeight": "{typography.line-height.body}"
+        }
+      },
+      "body": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontWeight": "{typography.weight.regular}",
+          "fontSize":   "{typography.size.14}",
+          "lineHeight": "{typography.line-height.body}"
+        }
+      },
+      "small": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontWeight": "{typography.weight.light}",
+          "fontSize":   "{typography.size.13}",
+          "lineHeight": "{typography.line-height.body}"
+        }
+      },
+      "caption": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontWeight": "{typography.weight.medium}",
+          "fontSize":   "{typography.size.12}",
+          "lineHeight": "{typography.line-height.body}"
+        }
+      }
+    }
+  },
+
+  "spacing": {
+    "xs":  { "$value": "8px",  "$type": "dimension" },
+    "sm":  { "$value": "12px", "$type": "dimension" },
+    "md":  { "$value": "16px", "$type": "dimension", "$description": "Dominant gap" },
+    "lg":  { "$value": "20px", "$type": "dimension" },
+    "xl":  { "$value": "28px", "$type": "dimension" },
+    "2xl": { "$value": "60px", "$type": "dimension" },
+    "container": {
+      "desktop": { "$value": "64px", "$type": "dimension" },
+      "tablet":  { "$value": "32px", "$type": "dimension" },
+      "mobile":  { "$value": "16px", "$type": "dimension" }
+    }
+  },
+
+  "radius": {
+    "0":    { "$value": "0px",   "$type": "dimension", "$description": "DEFAULT — Nooz is angular" },
+    "sm":   { "$value": "4px",   "$type": "dimension" },
+    "md":   { "$value": "8px",   "$type": "dimension", "$description": "Pickers, modals" },
+    "lg":   { "$value": "14px",  "$type": "dimension", "$description": "Selection cards" },
+    "xl":   { "$value": "20px",  "$type": "dimension", "$description": "Clear / Review cards" },
+    "pill": { "$value": "100px", "$type": "dimension" },
+    "round":{ "$value": "9999px","$type": "dimension" }
+  },
+
+  "shadow": {
+    "card":     { "$value": "0px 0px 10px rgba(0, 0, 0, 0.05)", "$type": "shadow" },
+    "card-alt": { "$value": "0px 4px 10px rgba(0, 0, 0, 0.02)", "$type": "shadow" },
+    "lg":       { "$value": "0px 1px 3px rgba(0,0,0,0.05), 0px 10px 15px -5px rgba(0,0,0,0.05), 0px 7px 7px -5px rgba(0,0,0,0.04)", "$type": "shadow" },
+    "xl":       { "$value": "0px 1px 3px rgba(0,0,0,0.05), 0px 20px 25px -5px rgba(0,0,0,0.05), 0px 10px 10px -5px rgba(0,0,0,0.04)", "$type": "shadow" },
+    "inset":    { "$value": "inset 0px 0px 0px 1px rgba(0,0,0,0.1), inset 0px 0px 4px rgba(0,0,0,0.15)", "$type": "shadow" }
+  },
+
+  "transition": {
+    "button": { "$value": "opacity 0.4s ease",  "$type": "transition" },
+    "header": { "$value": "top 0.7s ease-out",  "$type": "transition" }
+  },
+
+  "breakpoint": {
+    "xs": { "$value": "576px",  "$type": "dimension" },
+    "sm": { "$value": "768px",  "$type": "dimension" },
+    "md": { "$value": "992px",  "$type": "dimension" },
+    "lg": { "$value": "1200px", "$type": "dimension" },
+    "xl": { "$value": "1408px", "$type": "dimension" }
+  },
+
+  "z-index": {
+    "header":         { "$value": 99999, "$type": "number" },
+    "modal":          { "$value": 99990, "$type": "number" },
+    "drawer-inner":   { "$value": 98999, "$type": "number" },
+    "drawer-overlay": { "$value": 98990, "$type": "number" }
+  }
+}

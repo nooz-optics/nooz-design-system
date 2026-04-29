@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+  body{margin:0;padding:24px;background:#FCFAFA;font-family:'Mont',sans-serif;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:#fff;box-shadow:0 0 10px rgba(0,0,0,0.05);overflow:hidden;cursor:pointer}
+  .media{background:#F1ECEE;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative}
+  .glasses{width:68%;aspect-ratio:3/1;background:#2D2D2D;clip-path:polygon(0 40%,8% 20%,42% 20%,50% 40%,58% 20%,92% 20%,100% 40%,100% 70%,95% 80%,55% 80%,50% 60%,45% 80%,5% 80%,0 70%)}
+  .ribbon{position:absolute;top:8px;left:8px;background:#DC693B;color:#fff;font-size:9px;padding:3px 8px;border-radius:100px;font-weight:500}
+  .body{padding:12px 12px 14px;display:flex;flex-direction:column;gap:4px}
+  .title{font-size:13px;font-weight:600;color:#2D2D2D}
+  .desc{font-size:11px;color:#8D8D8D}
+  .price{font-size:14px;font-weight:900;color:#2D2D2D;margin-top:4px}
+  .price .dec{font-weight:100;color:#8D8D8D;font-size:11px}
+  .dots{display:flex;gap:5px;margin-top:6px}
+  .dots span{width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.1)}
+</style></head><body>
+<div class="card"><div class="media"><span class="ribbon">NEW</span><div class="glasses"></div></div>
+  <div class="body"><div class="title">Cruz</div><div class="desc">Reading · Tortoise</div><div class="dots"><span style="background:#2D2D2D"></span><span style="background:#731520"></span><span style="background:#B0A089"></span></div><div class="price">29<span class="dec">.95 €</span></div></div></div>
+<div class="card"><div class="media"><span class="ribbon" style="background:#FEAE00;color:#2D2D2D">SUN</span><div class="glasses" style="background:#4D6E41"></div></div>
+  <div class="body"><div class="title">Alba</div><div class="desc">Sun · Polarised</div><div class="dots"><span style="background:#4D6E41"></span><span style="background:#143963"></span></div><div class="price">39<span class="dec">.95 €</span></div></div></div>
+<div class="card"><div class="media"><span class="ribbon" style="background:#1C5FAB">BLUELIGHT</span><div class="glasses" style="background:#143963"></div></div>
+  <div class="body"><div class="title">Dino</div><div class="desc">Bluelight · Kids</div><div class="dots"><span style="background:#FC6806"></span><span style="background:#143963"></span></div><div class="price">24<span class="dec">.95 €</span></div></div></div>
+</body></html>

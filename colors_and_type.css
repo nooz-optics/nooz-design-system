@@ -1,0 +1,310 @@
+/* ==========================================================================
+   Nooz Optics — Colors + Type Foundations
+   Extracted from nooz-web (Mantine theme NoozTheme.ts + app.css + design-system.mdc)
+   ========================================================================== */
+
+/* --- Fonts --- */
+@font-face {
+  font-family: 'Mont';
+  font-weight: 100;
+  src: url('./fonts/mont-light.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mont';
+  font-weight: 300;
+  src: url('./fonts/mont-regular.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mont';
+  font-weight: 500;
+  src: url('./fonts/mont-semibold.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mont';
+  font-weight: 700;
+  src: url('./fonts/mont-bold.otf') format('opentype');
+  font-display: swap;
+}
+/* Mont has no 900 cut in the codebase — 700 is used where 900 is specified by the theme. */
+
+:root {
+  /* ------------------------------------------------------------------
+     BRAND COLORS
+     ------------------------------------------------------------------ */
+  --nooz-black: #000000;
+  --nooz-white: #ffffff;
+  --nooz-terracota: #DC693B;  /* PRIMARY — CTAs, links, accents */
+  --nooz-background: #FCFAFA; /* Page background */
+
+  /* Text & titles */
+  --nooz-title: #2D2D2D;        /* Headings default */
+  --nooz-title-dimmed: #454545; /* Secondary headings */
+  --nooz-text: #585858;         /* Body text default */
+  --nooz-decimal: #8D8D8D;      /* Muted — e.g. price decimals */
+
+  /* Neutrals */
+  --nooz-light-gray: #F5F5F5;   /* Surfaces, separators */
+  --nooz-dimmed: #D1D1D1;       /* Borders */
+  --nooz-media-bg: #F1ECEE;     /* Product media background */
+
+  /* Accents */
+  --nooz-main: #1C5FAB;         /* Accent blue */
+  --nooz-yellow: #FDF185;       /* Highlight / promo */
+
+  /* Category colors */
+  --nooz-cat-sun: #FEAE00;
+  --nooz-cat-reading: #731520;
+  --nooz-cat-bluelight: #1C5FAB;
+  --nooz-cat-kids: #FC6806;
+  --nooz-cat-sport: #61B232;
+  --nooz-cat-original: #EF233C;
+  --nooz-cat-club-house: #194733;
+  --nooz-cat-reading-sun: #B0A089;
+  --nooz-cat-reading-sun-bifocal: #826C4E;
+  --nooz-cat-reading-degressive: #4D6E41;
+  --nooz-cat-reading-degressive-bluelight: #826C4E;
+  --nooz-cat-reading-bluelight: #143963;
+
+  /* Semantic */
+  --nooz-error: #FA5252;
+
+  /* Aliases (fg / bg / surface convention) */
+  --fg1: var(--nooz-title);    /* strongest foreground */
+  --fg2: var(--nooz-text);     /* body */
+  --fg3: var(--nooz-decimal);  /* muted */
+  --bg1: var(--nooz-background);
+  --bg2: var(--nooz-white);
+  --bg3: var(--nooz-light-gray);
+  --border: var(--nooz-dimmed);
+  --accent: var(--nooz-terracota);
+
+  /* ------------------------------------------------------------------
+     TYPOGRAPHY
+     ------------------------------------------------------------------ */
+  --font-sans: 'Mont', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  /* Sizes (scale used across the site) */
+  --fs-10: 10px;
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;  /* BODY DEFAULT */
+  --fs-18: 18px;
+  --fs-24: 24px;
+  --fs-28: 28px;
+  --fs-34: 34px;
+  --fs-42: 42px;
+  --fs-50: 50px;
+  --fs-70: 70px;
+
+  /* Weights */
+  --fw-thin: 100;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900; /* Falls back to 700 — no 900 cut shipped */
+
+  --lh-tight: 1.0;
+  --lh-body: 1.55;
+
+  /* ------------------------------------------------------------------
+     SPACING / LAYOUT
+     ------------------------------------------------------------------ */
+  --container-pad-desktop: 64px;
+  --container-pad-tablet: 32px;
+  --container-pad-mobile: 16px;
+
+  /* Gap palette from production (Mantine + custom) */
+  --gap-xs: 8px;
+  --gap-sm: 12px;
+  --gap-md: 16px;   /* dominant */
+  --gap-lg: 20px;
+  --gap-xl: 28px;
+  --gap-2xl: 60px;
+
+  /* Breakpoints */
+  --bp-xs: 576px;
+  --bp-sm: 768px;
+  --bp-md: 992px;
+  --bp-lg: 1200px;
+  --bp-xl: 1408px;
+
+  /* Radii — Nooz is angular. 0 is the law. */
+  --radius-0: 0px;     /* DEFAULT for buttons, cards, images, inputs */
+  --radius-sm: 4px;    /* Mantine input default */
+  --radius-md: 8px;    /* Pickers, modals */
+  --radius-lg: 14px;   /* Selection cards */
+  --radius-xl: 20px;   /* Clear / Review cards */
+  --radius-pill: 100px;
+  --radius-round: 50%;
+
+  /* Shadows — extremely subtle */
+  --shadow-card: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  --shadow-card-alt: 0px 4px 10px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0px 1px 3px rgba(0,0,0,0.05), 0px 10px 15px -5px rgba(0,0,0,0.05), 0px 7px 7px -5px rgba(0,0,0,0.04);
+  --shadow-xl: 0px 1px 3px rgba(0,0,0,0.05), 0px 20px 25px -5px rgba(0,0,0,0.05), 0px 10px 10px -5px rgba(0,0,0,0.04);
+  --shadow-inset: 0px 0px 0px 1px rgba(0,0,0,0.1) inset, 0px 0px 4px rgba(0,0,0,0.15) inset;
+
+  /* Transitions */
+  --transition-button: opacity 0.4s ease;
+  --transition-header: top 0.7s ease-out;
+
+  /* Z-index */
+  --z-header: 99999;
+  --z-modal: 99990;
+  --z-drawer-inner: 98999;
+  --z-drawer-overlay: 98990;
+
+  /* Header heights */
+  --header-banner-h: 30px;
+  --header-sticky-h: 40px;
+  --header-sub-h: 40px;
+  --header-main-h: 60px;
+}
+
+/* ==========================================================================
+   SEMANTIC TYPE STYLES
+   Use these directly: <h1 class="h1">, <p class="body">, etc.
+   ========================================================================== */
+
+html, body {
+  font-family: var(--font-sans);
+  color: var(--fg2);
+  background: var(--bg1);
+  font-size: var(--fs-14);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.display {
+  font-size: var(--fs-70);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  color: var(--fg1);
+  letter-spacing: -0.01em;
+}
+
+.h1 {
+  font-size: var(--fs-42);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  color: var(--fg1);
+}
+
+.h2 {
+  font-size: var(--fs-34);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  color: var(--fg1);
+}
+
+.h3, .section-heading {
+  font-size: var(--fs-28);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-body);
+  color: var(--fg1);
+  margin-bottom: var(--gap-xl);
+}
+
+.h4 {
+  font-size: var(--fs-24);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-body);
+  color: var(--fg1);
+}
+
+.subheading, .lead {
+  font-size: var(--fs-18);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--fg2);
+}
+
+.body {
+  font-size: var(--fs-14);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--fg2);
+}
+
+.small {
+  font-size: var(--fs-13);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-body);
+  color: var(--fg2);
+}
+
+.caption {
+  font-size: var(--fs-12);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-body);
+  color: var(--fg2);
+}
+
+.micro {
+  font-size: var(--fs-11);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--fg2);
+  letter-spacing: 0.01em;
+}
+
+.tiny {
+  font-size: var(--fs-10);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
+  color: var(--fg2);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: var(--transition-button);
+}
+a:hover { opacity: 0.7; }
+
+/* ==========================================================================
+   BUTTON (baseline)
+   ========================================================================== */
+.nooz-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: var(--radius-0);
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: var(--transition-button);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.nooz-btn:hover { opacity: 0.7; }
+.nooz-btn:focus { opacity: 1; outline: none; }
+.nooz-btn--filled  { background: var(--accent); color: var(--nooz-white); }
+.nooz-btn--black   { background: var(--nooz-black); color: var(--nooz-white); }
+.nooz-btn--white   { background: var(--nooz-white); color: var(--nooz-black); }
+.nooz-btn--outline { background: transparent; color: var(--nooz-black); border-color: var(--nooz-black); }
+.nooz-btn--light   { background: rgba(220,105,59,0.1); color: var(--accent); }
+.nooz-btn--subtle  { background: transparent; color: var(--nooz-black); }
+
+/* ==========================================================================
+   CARD (baseline)
+   ========================================================================== */
+.nooz-card {
+  background: var(--nooz-white);
+  border-radius: var(--radius-0);
+  box-shadow: var(--shadow-card);
+  padding: 0;
+}
