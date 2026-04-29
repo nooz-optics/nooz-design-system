@@ -400,41 +400,6 @@
       color: var(--nooz-decimal);
     }
 
-    .pp-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--nooz-dimmed);
-      border: 1px solid var(--nooz-dimmed);
-    }
-    .pp-card {
-      background: var(--nooz-white);
-      padding: 36px 32px 28px;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-    .pp-card:hover { background: #fffefe; }
-    .pp-card .demo {
-      font-size: 80px;
-      color: var(--nooz-title);
-      line-height: 1;
-      margin-bottom: 24px;
-      letter-spacing: -0.02em;
-    }
-    .pp-card .name {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--nooz-title);
-    }
-    .pp-card .meta {
-      font-family: 'SF Mono', Menlo, monospace;
-      font-size: 11px;
-      color: var(--nooz-decimal);
-      margin-top: 4px;
-    }
-
     /* ── Color swatches ── */
     .swatch-grid {
       display: grid;
@@ -923,15 +888,12 @@
         <div class="section-num">00 / Identity</div>
         <div class="section-title">
           <h2>Identité</h2>
-          <p>Logos officiels NOOZ — trois lockups (Nooz Optics / Nooz / L'opticien Nooz) en variantes black &amp; white. PP Neue Machina : font display utilisée sur le brand book et les supports print.</p>
+          <p>Logos officiels NOOZ — trois lockups (Nooz Optics / Nooz / L'opticien Nooz) en variantes black &amp; white. Click sur un logo pour copier son chemin.</p>
         </div>
       </div>
 
       <div class="group-label">Logos <small>3 lockups · black + white</small></div>
       <div class="logos-grid" id="logos"></div>
-
-      <div class="group-label">PP Neue Machina <small>Display font · Plain &amp; Inktrap</small></div>
-      <div class="pp-grid" id="pp-samples"></div>
     </section>
 
     <section class="section" id="colors">
@@ -1351,32 +1313,6 @@
     });
   };
 
-  const PP_SAMPLES = [
-    { family: 'PP Neue Machina', weight: 300, label: 'Plain Light' },
-    { family: 'PP Neue Machina', weight: 400, label: 'Plain Regular' },
-    { family: 'PP Neue Machina', weight: 500, label: 'Plain Medium' },
-    { family: 'PP Neue Machina', weight: 800, label: 'Plain Ultrabold' },
-    { family: 'PP Neue Machina Inktrap', weight: 300, label: 'Inktrap Light' },
-    { family: 'PP Neue Machina Inktrap', weight: 400, label: 'Inktrap Regular' },
-    { family: 'PP Neue Machina Inktrap', weight: 500, label: 'Inktrap Medium' },
-    { family: 'PP Neue Machina Inktrap', weight: 800, label: 'Inktrap Ultrabold' },
-  ];
-
-  const renderPPSamples = () => {
-    const c = document.getElementById('pp-samples');
-    PP_SAMPLES.forEach(s => {
-      const div = document.createElement('div');
-      div.className = 'pp-card';
-      div.onclick = () => copy(`font-family: '${s.family}'; font-weight: ${s.weight};`);
-      div.innerHTML = `
-        <div class="demo" style="font-family:'${s.family}'; font-weight:${s.weight}">Nooz</div>
-        <div class="name">${s.label}</div>
-        <div class="meta">${s.family} · ${s.weight}</div>
-      `;
-      c.appendChild(div);
-    });
-  };
-
   // ── Lazy-load preview iframes ──
   const PREVIEWS = [
     { src: 'preview/colors-core.html', title: 'Colors core' },
@@ -1507,7 +1443,6 @@
       renderShadows(tokens);
 
       renderLogos();
-      renderPPSamples();
       renderPreviews();
       initSearch();
       initFormatToggle();
