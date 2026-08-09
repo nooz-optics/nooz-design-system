@@ -31,6 +31,10 @@ REPO_EMOJI = {
     "shopify-custom-app": "🛍️",
     "nooz-bridge": "🌉",
     "nooz-design-system": "📐",
+    "nooz-agents": "🤖",
+    "nooz-agents-tech": "🔧",
+    "nooz-agents-shared": "🧰",
+    "nooz-agents-corp": "🔐",
 }
 
 
